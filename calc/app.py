@@ -39,3 +39,21 @@ def do_div():
     result = div(a,b)
 
     return str(result)
+
+# Further study, create route that handles 4 different URLs
+
+operators = {
+    "add":add,
+    "sub":sub,
+    "mult":mult,
+    "div":div,
+}
+
+@app.route('/math/<oper>')
+def do_math():
+    """Do math on a and b"""
+    a = int(request.args.get('a'))
+    b = int(request.args.get('b'))
+    result = operators[oper](a,b)
+
+    return str(result)
